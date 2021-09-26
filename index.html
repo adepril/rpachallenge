@@ -24,6 +24,10 @@
 					<h1>RPA Challenge</h1>
 					<P></P>
 					<h2><a href="http://www.uipath.com"> <img src="images/logo uipath.gif" alt="UiPath" width="100px" /> </a> &nbsp;&nbsp;&nbsp; VS &nbsp;&nbsp;&nbsp; <a href="http://www.automationanywhere.com"> <img src="images/logo-automation-anywhere.gif" width="100px"  alt="Automation Anywhere" /> </a></h2>
+					
+					<p>In this challenge, we have to fill out forms with data which is stored in an Excel file.
+						<BR>Each time we submit the form, the order of the fields changes
+					</p>
 					<P>
 						<span class="image">
 							<a href="http://www.rpachallenge.com/" target="_blank" >
@@ -31,6 +35,13 @@
 							</a>
 						</span>
 					</P>
+
+					<P>
+						<span class="image">
+								<img src="images/ScreenShot Excel challenge.png" class="brd" alt="Excel file" width="300px"/>
+						</span>
+					</P>
+
 					<P>
 						Both solutions offer the same tools to implement a process. 
 					<BR>So I tackled the "RPA Challenge", coding the same process on both platforms.
@@ -60,6 +71,103 @@
 					</div>
 				</div>
 			</div>
+			
+			<header class="major special"></header><P></P>
+
+		
+			<section>
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium">
+							
+							<header class="major">
+								<h2>Workflow</h2>
+							</header>
+							<p>Here is an overview of the script. Each part is detailed below.</p>
+						</div>
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/uipath Main workflow.png" class="" alt="" /></span>
+						</div>
+					</div>
+				</div>			
+			</section>
+
+			<section>
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium">
+							
+							<p><b>1</b> Test if the Excel file is present on the computer.</p>
+							<p><b>2</b> If not, click on "Download button".</p>
+						</div>
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/uipath If file exist.png" class="" alt="" /></span>
+						</div>
+					</div>
+				</div>			
+			</section>
+
+			<section>
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium">
+							
+							<p><b>3</b> Thanks to the Excel activity, we create a DataTable with the content of the sheet.</p>
+							<p><b>4</b> Then we press the button to start the challenge.</p>
+						</div>
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/uipath Excel Scope.png" class="" alt="" /></span>
+						</div>
+					</div>
+				</div>			
+			</section>
+
+			<section>
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium">
+							<p>In the "For each row" section, we are going to loop through "dtChallenge" DataTable to insert all datas.</p>
+
+							<p>At each iteration, we fill in 7 fields. </P>
+								<ul>
+									<li>Fist Name</li>
+									<li>Last Name</li>
+									<li>Address</li>
+									<li>Email</li>
+									<LI>Phone Number</LI>
+									<li>Company Name</li>
+									<li>Role In Company</li>
+								</ul>
+							<P>Each time the location of the fields is different.</p> 
+							<P>The solution is to look for the name of the field, then insert the data in the Input field just below it.</p>
+							<P>See below for more details, using the "First Name" field as an example.</P>
+							<p>Finally, when the 7 fields are filled, we click on Submit button. Then we do another iteration to fill another page.</p>
+
+						</div>
+						<div class="col-6 col-12-medium">
+							<span class="image "><img src="images/uipath For each.png" class="" alt="" /></span>
+						</div>
+					</div>
+				</div>			
+			</section>
+
+			<section>
+				<div class="container">
+					<div class="row gtr-150">
+						<div class="col-6 col-12-medium">
+							
+							<p>Here, we take the example of the "First Name" field, but the principle is the same for the 7 fields.</p>
+							<P>We put in a variable <I>(columnName)</I> the name of the Label field we want to reach. </P>
+							<P>Then we use this variable in the selector of the "Find Element" activity.</P>
+							<P>Finally, we fill the Input field with this same variable.</P>
+						</div>
+						<div class="col-6 col-12-medium">
+							<span class="image fit"><img src="images/uipath seq dynamic selector.png" class="" alt="" /></span>
+						</div>
+					</div>
+				</div>			
+			</section>
+
 		</section>
 
 		<!-- Two -->
